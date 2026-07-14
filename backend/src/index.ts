@@ -6,7 +6,7 @@ import userRoute from "./routes/userRoute.js";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+app.use(express.json());
 
 if (!process.env.DATABASE || !process.env.DATABASE_PASSWORD) {
   throw new Error("Database environment variables are missing");
@@ -27,6 +27,8 @@ mongoose
   });
 
 app.use("/api/v1/users", userRoute);
+
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
