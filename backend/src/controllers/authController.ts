@@ -19,6 +19,7 @@ const signup = async (
     email,
     password,
   });
+
   res.json({ status: "processing" });
 };
 
