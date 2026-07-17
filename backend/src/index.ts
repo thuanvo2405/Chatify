@@ -26,6 +26,7 @@ mongoose
   })
   .catch((err) => {
     console.error(err);
+    process.exit(1);
   });
 
 app.use("/api/v1/users", userRoute);

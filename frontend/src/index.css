@@ -1,111 +1,446 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+/* @theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: "Geist Variable", sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.62 0.21 260);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+} */
+
+@theme inline {
+  --font-heading: var(--font-display);
+  --font-display: "Bricolage Grotesque", sans-serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-mono: "Space Mono", monospace;
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+
+  /* Doodle-specific extras */
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-foreground: var(--tertiary-foreground);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 9999px; /* "full" trong theme gốc */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+:root {
+  /* Nền & bề mặt — "Milk-Tea" pastel, giấy kem */
+  --background: #fdf7ff;
+  --foreground: #1d192a;
+
+  --card: #ffffff; /* surface-container-lowest */
+  --card-foreground: #1d192a;
+
+  --popover: #f8f1ff; /* surface-container-low */
+  --popover-foreground: #1d192a;
+
+  /* Primary = Mint, dùng cho action chính */
+  --primary: #366758;
+  --primary-foreground: #ffffff;
+
+  /* Secondary = Lavender, accent tương tác */
+  --secondary: #725477;
+  --secondary-foreground: #ffffff;
+
+  /* Tertiary = Peach, dùng highlight/notification */
+  --tertiary: #745945;
+  --tertiary-foreground: #ffffff;
+  --tertiary-container: #fdd8bf;
+  --on-tertiary-container: #785d49;
+
+  --muted: #f3eaff; /* surface-container */
+  --muted-foreground: #404945; /* on-surface-variant */
+
+  --accent: #fad3fd; /* secondary-container */
+  --accent-foreground: #77587c; /* on-secondary-container */
+
+  --destructive: #ba1a1a;
+  --destructive-foreground: #ffffff;
+
+  --border: #c0c9c4; /* outline-variant, dùng cho ink outline 2px */
+  --input: #c0c9c4;
+  --ring: #366758; /* primary, dùng cho focus/highlight-pen state */
+
+  /* Chart — dải từ container nhạt đến ink đậm */
+  --chart-1: #b5ead7; /* primary-container */
+  --chart-2: #366758; /* primary */
+  --chart-3: #fad3fd; /* secondary-container */
+  --chart-4: #725477; /* secondary */
+  --chart-5: #745945; /* tertiary */
+
+  --radius: 0.5rem;
+
+  /* Sidebar — dùng dải surface-container đậm hơn để tạo layering vật lý */
+  --sidebar: #f3eaff;
+  --sidebar-foreground: #1d192a;
+  --sidebar-primary: #366758;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ede4fd; /* surface-container-high */
+  --sidebar-accent-foreground: #1d192a;
+  --sidebar-border: #c0c9c4;
+  --sidebar-ring: #366758;
+
+  /* Token phụ trợ cho "Cozy Doodle" — dùng trong component (shadow block, wobble...) */
+  --ink: #1d192a; /* màu viền/ink pen cho mọi border 2px */
+  --doodle-offset: 4px; /* offset của "shadow" pastel phía sau card/button */
+  --spacing-unit: 8px;
+  --container-padding: 24px;
+  --gutter: 16px;
+}
+
+/* Không định nghĩa .dark riêng — theme Cozy Doodle được thiết kế như một bảng giấy sáng duy nhất.
+   Nếu cần bản tối, dùng inverse-surface (#332e40) / inverse-on-surface (#f5eeff) làm nền/chữ,
+   giữ nguyên primary/secondary để không phá vỡ nhận diện thương hiệu. */
+.dark {
+  --background: #332e40;
+  --foreground: #f5eeff;
+  --card: #3d3650;
+  --card-foreground: #f5eeff;
+  --popover: #3d3650;
+  --popover-foreground: #f5eeff;
+  --primary: #9dd1bf;
+  --primary-foreground: #002018;
+  --secondary: #dfbbe4;
+  --secondary-foreground: #2a1131;
+  --tertiary: #e3c0a8;
+  --tertiary-foreground: #2a1708;
+  --tertiary-container: #5a422f;
+  --on-tertiary-container: #ffdcc4;
+  --muted: #453d5a;
+  --muted-foreground: #c0c9c4;
+  --accent: #593d5f;
+  --accent-foreground: #fcd7ff;
+  --destructive: #ffb4ab;
+  --destructive-foreground: #690005;
+  --border: #5a5470;
+  --input: #5a5470;
+  --ring: #9dd1bf;
+  --chart-1: #9dd1bf;
+  --chart-2: #366758;
+  --chart-3: #dfbbe4;
+  --chart-4: #725477;
+  --chart-5: #e3c0a8;
+  --sidebar: #2a2536;
+  --sidebar-foreground: #f5eeff;
+  --sidebar-primary: #9dd1bf;
+  --sidebar-primary-foreground: #002018;
+  --sidebar-accent: #453d5a;
+  --sidebar-accent-foreground: #f5eeff;
+  --sidebar-border: #5a5470;
+  --sidebar-ring: #9dd1bf;
+  --ink: #f5eeff;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    /* Texture giấy nhẹ, giảm cảm giác "digital glare" */
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      rgba(29, 25, 42, 0.035) 1px,
+      transparent 0
+    );
+    background-size: 18px 18px;
   }
-}
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-}
+  html {
+    @apply font-sans;
+  }
 
-body {
-  margin: 0;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
-}
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
+  h1 {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+  h2 {
     font-size: 36px;
-    margin: 20px 0;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  /* Label/metadata kiểu "đánh máy tay" */
+  .label-mono {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 32px;
+      line-height: 1.2;
+    }
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+
+@layer utilities {
+  /* Viền "ink" 2px kiểu vẽ tay — dùng thay cho box-shadow mặc định */
+  .ink-outline {
+    border: 2px solid var(--ink);
+    border-radius: var(--radius-lg);
   }
-}
-p {
-  margin: 0;
-}
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
+  /* Khối bóng pastel phía sau (thay cho box-shadow chuẩn) — "Physical Layering" */
+  .doodle-radius {
+    border-radius: 255px 20px 225px 20px / 20px 225px 20px 255px;
+  }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+  .doodle-radius-hover {
+    border: 2px solid transparent;
+  }
+
+  .doodle-radius-hover:hover {
+    border: 2px solid var(--primary);
+    border-radius: 255px 20px 225px 20px / 20px 225px 20px 255px;
+  }
+
+  .doodle-shadow {
+    position: relative;
+    box-shadow: 4px 4px 2px 0px rgba(0, 0, 0, 0.2);
+  }
+  /* .doodle-shadow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    top: var(--doodle-offset);
+    left: var(--doodle-offset);
+    background: var(--chart-1);
+    border: 2px solid var(--ink);
+    border-radius: inherit;
+    z-index: -1;
+  } */
+
+  /* Xoay nhẹ ngẫu nhiên kiểu "note dán trên bàn" — gán class -1/0/1 xen kẽ theo index */
+  .doodle-rotate--1 {
+    transform: rotate(-1deg);
+  }
+  .doodle-rotate-0 {
+    transform: rotate(0.5deg);
+  }
+  .doodle-rotate-1 {
+    transform: rotate(-0.5deg);
+  }
+
+  /* Input kiểu "ink line" — gạch chân, không viền hộp, highlight kiểu bút dạ khi focus */
+  .doodle-input {
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 2px solid var(--ink) !important;
+    border-radius: 0 !important;
+    padding-left: 0.25rem !important;
+    box-shadow: none !important;
+    transition: background-color 0.15s ease;
+  }
+  .doodle-input:focus,
+  .doodle-input:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: color-mix(
+      in oklab,
+      var(--tertiary-container) 55%,
+      transparent
+    ) !important;
+  }
+
+  /* Button kiểu "solid block + ink border + shadow block", squish khi hover/click */
+  .doodle-button {
+    position: relative;
+    border: 2px solid var(--ink) !important;
+    border-radius: var(--radius-lg) !important;
+    box-shadow: var(--doodle-offset) var(--doodle-offset) 0 0 var(--ink);
+    transform: translate(0, 0);
+    transition:
+      transform 0.1s ease,
+      box-shadow 0.1s ease;
+  }
+  .doodle-button:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 0 var(--ink);
+  }
+  .doodle-button:active {
+    transform: translate(var(--doodle-offset), var(--doodle-offset));
+    box-shadow: 0 0 0 0 var(--ink);
+  }
 }

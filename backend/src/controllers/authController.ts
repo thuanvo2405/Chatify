@@ -20,7 +20,10 @@ const signup = async (
     password,
   });
 
-  res.json({ status: "processing" });
+  res.json({
+    status: "success",
+    message: "User created successfully. Please log in to continue.",
+  });
 };
 
 const login = async (req: Request, res: Response, next: NextFunction) => {
